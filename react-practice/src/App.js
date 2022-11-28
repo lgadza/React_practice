@@ -6,6 +6,7 @@ import MyBadge from "./components/MyBadge";
 import SingleBook from "./components/SingleBook";
 import BookList from "./BookList";
 import history from "..//src/books/history.json";
+import AddComment from "./components/AddComment";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <NavBar />
       <Container>
         <WarningSign />
+        {/* <AddComment /> */}
         <MyBadge />
         {/* <SingleBook /> */}
         <BookList books={history} />

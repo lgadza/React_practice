@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Card, ListGroup } from "react-bootstrap";
+import AddComment from "./AddComment";
 
 class SingleBook extends Component {
   state = {
@@ -7,19 +8,19 @@ class SingleBook extends Component {
     loading: true,
   };
 
-  eventHandler() {
-    console.log("clicked");
+  eventHandler = () => {
     this.setState({
       selected: true,
       loading: false,
     });
-  }
+    console.log("clicked");
+  };
   render() {
     return (
       <Card
         key={this.props.book.asin}
-        className=""
-        onClick={this.eventHandler()}
+        onClick={this.eventHandler}
+        style={{ border: this.state.selected ? "3px solid red" : "none" }}
       >
         <Card.Img variant="top" src={this.props.book.img} />
         <Card.Body>
@@ -29,6 +30,7 @@ class SingleBook extends Component {
         <ListGroup className="list-group-flush">
           <ListGroup.Item>Price: $USD{this.props.book.price}</ListGroup.Item>
         </ListGroup>
+        {this.state.selected && <AddComment />}
       </Card>
     );
   }
